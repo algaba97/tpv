@@ -16,6 +16,10 @@ Boton::~Boton()
 }
 bool Boton::onClick(){
 	juego->getMousePos(x, y);
-	if (dentro(x, y))cb(juego);
-	return true;
+	if (dentro(x, y)){ 
+		
+		cb(juego);
+		return true;
+	}
+	return false;
 }
