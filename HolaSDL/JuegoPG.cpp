@@ -11,7 +11,10 @@
 
 #include "TexturasSDL.h"
 #include <SDL_ttf.h>
-
+#include "EstadoJuego.h"
+#include "EstadoPG.h"
+#include "MenuPG.h"
+#include <stack>
 using namespace std;
 
 //onstructora que Los atributos se deben
@@ -21,6 +24,8 @@ using namespace std;
 // 3 - Los objetos, hacen falta las texturas para la constructora
 JuegoPG::JuegoPG()
 {
+
+	estado.push(new MenuPG());
 	direcciones.resize(7);
 	direcciones[0] = "fondo.png";
 	direcciones[1] = "globo.png";
@@ -304,7 +309,7 @@ void JuegoPG::initObjetos(){
 	}
 	a = rand() % 770;
 	b = rand() % 770;
-	Objetos.push_back(new Mariposa(this, a,b));
+	Objetos.push_back(new Mariposa(this, a, b));
 	a = rand() % 770;
 	b = rand() % 770;
 	Objetos.push_back(new Mariposa(this, a, b));
@@ -322,8 +327,27 @@ void JuegoPG::freeMedia(){
 		delete textura[i];
 	}
 	//borramos los globos
-	largo = Objetos.size();
+	largo = estado.size();
 	for (int x = 0; x < largo; x++){
-		delete Objetos[x];
+		estado.pop();
 	}
+}
+void JuegoPG::changeState(EstadoJuego*newSt){
+
+	estado.pop();
+	estado.push(newSt);
+
+}
+EstadoJuego*  JuegoPG::topEstado(){
+	return estado.top();
+}
+void JuegoPG::pushState(EstadoJuego* newState){
+	estado.push(newState);
+}
+void JuegoPG::popState(){
+	estado.pop();
+}
+void JuegoPG::setSalir(){
+	freeMedia();
+	closeSDL();
 }

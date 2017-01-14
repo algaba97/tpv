@@ -6,6 +6,8 @@
 #include "TexturasSDL.h"
 #include <vector>
 #include "ObjetoJuego.h"
+#include "EstadoJuego.h"
+#include <stack>
 
 
 using namespace std;
@@ -40,14 +42,20 @@ public:
 	void freeMedia();
 	void initObjetos();
 	SDL_Window* getWindow(){ return window; }
+	EstadoJuego* topEstado();
 	
+	void changeState(EstadoJuego* newSt);
+	void pushState(EstadoJuego* newState);
+	void popState();
+	void setSalir();
+
 private:
 	
 	Texturas_t texturas;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	SDL_Color color;
-	vector<ObjetoJuego*> Objetos;
+	
 	vector<TexturasSDL*> textura;
 	vector<string> direcciones;
 	int globos = 4;
@@ -57,7 +65,7 @@ private:
 	bool gameOver;
 	int mousex, mousey;
 	bool fin;
-	
+	stack<EstadoJuego*> estado;
 
 
 };

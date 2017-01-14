@@ -8,7 +8,7 @@ class Error
 protected:
 	string mensaje;
 public:
-	Error(string m)  {
+	Error(string const & m)  {
 		mensaje = m;
 		
 	}
@@ -20,3 +20,7 @@ public:
 
 };
 #endif
+class errorTextura : public Error {
+public:
+	errorTextura(string const& m) : Error(m) {};
+};

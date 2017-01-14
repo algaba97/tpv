@@ -4,6 +4,7 @@
 #include "SDL.h"
 #include <SDL_ttf.h>
 #include "SDL_image.h"
+#include "Error.h"
 using namespace std;
 
 
@@ -45,6 +46,8 @@ bool TexturasSDL::load(SDL_Renderer*render, string const& nombArch){
 	
 	if (pTempSurface == nullptr) {
 		cout << "Unable to load image " << bmpName << "! \nSDL Error: " << SDL_GetError() << '\n';
+		throw errorTextura("Unable to load image");
+
 		success = false;
 	}
 	else {

@@ -14,6 +14,6 @@ public:
 	virtual ~EstadoPG();
 protected:
 	JuegoPG* juego;
-	vector<ObjetoJuego*> objetos;
+	vector<ObjetoJuego*> Objetos;
 };
 #endif
