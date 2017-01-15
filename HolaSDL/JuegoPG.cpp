@@ -194,10 +194,8 @@ bool JuegoPG::initSDL() {
 		success = false;
 	}
 	else {
-		int SCREEN_WIDTH, SCREEN_HEIGHT;
-		SCREEN_WIDTH = SCREEN_HEIGHT = 800;
 		//Create window: SDL_CreateWindow("SDL Hello World", posX, posY, width, height, SDL_WINDOW_SHOWN);
-		window = SDL_CreateWindow("SDL Hello World", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+		window = SDL_CreateWindow("SDL Hello World", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, ancho, alto, SDL_WINDOW_SHOWN);
 		if (window == nullptr){
 			cout << "Window could not be created! \nSDL_Error: " << SDL_GetError() << '\n';
 			success = false;

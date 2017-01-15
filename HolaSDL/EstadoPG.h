@@ -7,9 +7,9 @@
 class EstadoPG : public EstadoJuego
 {
 public:
-	EstadoPG();
-	void update(){ for (int i = 0; i < objetos.size(); i++)objetos[i]->update(); }
-	void draw(){ for (int i = 0; i < objetos.size(); i++)objetos[i]->draw(); }
+	EstadoPG(JuegoPG * juego);
+	void update(){ for (int i = 0; i < Objetos.size(); i++)Objetos[i]->update(); }
+	void draw(){ for (int i = 0; i < Objetos.size(); i++)Objetos[i]->draw(); }
 	void onClick();
 	virtual ~EstadoPG();
 protected:

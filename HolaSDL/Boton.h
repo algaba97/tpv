@@ -8,9 +8,10 @@ public:
 	typedef void CallBack_t(JuegoPG* jg);
 	Boton(CallBack_t* callback,JuegoPG*jogo, int px, int py);
 	~Boton();
-	bool onClick();
+	virtual bool onClick();
+	virtual void update(){}//está por hacer}
 	
-private: 
+protected: 
 	CallBack_t * cb;
 };
 #endif

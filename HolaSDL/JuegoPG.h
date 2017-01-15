@@ -48,14 +48,15 @@ public:
 	void pushState(EstadoJuego* newState);
 	void popState();
 	void setSalir();
-
+	int getAncho(){ return ancho; }
+	int getAlto(){ return alto; }
 private:
 	
 	Texturas_t texturas;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	SDL_Color color;
-	
+	int const ancho = 800, alto = 600;
 	vector<TexturasSDL*> textura;
 	vector<string> direcciones;
 	int globos = 4;

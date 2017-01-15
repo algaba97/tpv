@@ -4,7 +4,7 @@
 class PlayPG : public EstadoPG
 {
 public:
-	PlayPG();
+	PlayPG(JuegoPG*Juego);
 	~PlayPG();
 	void update();
 private:

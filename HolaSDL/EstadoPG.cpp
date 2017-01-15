@@ -1,8 +1,9 @@
 #include "EstadoPG.h"
 
 
-EstadoPG::EstadoPG()
+EstadoPG::EstadoPG(JuegoPG*Juego)
 {
+	juego = Juego;
 }
 
 
@@ -11,7 +12,7 @@ EstadoPG::~EstadoPG()
 }
  void EstadoPG::onClick(){
 	 bool pinchado = false;
-	 for (int i = 0; i < objetos.size() && !pinchado; i++)
-		 if (objetos[i]->onClick())pinchado = true;
+	 for (int i = 0; i < Objetos.size() && !pinchado; i++)
+		 if (Objetos[i]->onClick())pinchado = true;
  
 }
