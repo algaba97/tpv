@@ -10,7 +10,7 @@ class GlobosPG : public ObjetoPG
 {
 public:            
 	
-	GlobosPG(JuegoPG*jogo,int px,int py,int tipo);
+	GlobosPG(PlayPG*est,JuegoPG*jogo, int px, int py, int tipo);
 
 	~GlobosPG();
 	virtual void update();
@@ -27,5 +27,7 @@ protected:
 
 	
 	int tam;
+private:
+	PlayPG*estado;
 };
 #endif

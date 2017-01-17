@@ -8,7 +8,7 @@
 
 using namespace std;
 
-GloboA::GloboA(JuegoPG*jogo, int px, int py, int tipo) :GlobosPG(jogo,px,py,tipo)
+GloboA::GloboA(PlayPG*est,JuegoPG*jogo, int px, int py, int tipo) :GlobosPG(est,jogo, px, py, tipo)
 {
 	
 }

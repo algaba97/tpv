@@ -9,7 +9,7 @@
 class Mariposa : public ObjetoPG
 {
 public:
-	Mariposa(JuegoPG*jogo, int px, int py);
+	Mariposa(PlayPG*est,JuegoPG*jogo, int px, int py);
 	~Mariposa();
 	 void update();
 	 bool onClick();
@@ -21,5 +21,6 @@ private:
 	
 	int posicion = 1;
 	SDL_Rect cacho;
+	PlayPG*estado;
 };
 #endif

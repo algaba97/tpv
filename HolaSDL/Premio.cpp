@@ -1,7 +1,7 @@
 #include "Premio.h"
 
 
-Premio::Premio(JuegoPG*jogo, int px, int py) : ObjetoPG(jogo,x,y)
+Premio::Premio(PlayPG*est,JuegoPG*jogo, int px, int py) : ObjetoPG(jogo,x,y)
 {
 	textura = TPremio;
 	visible = false;
@@ -9,6 +9,7 @@ Premio::Premio(JuegoPG*jogo, int px, int py) : ObjetoPG(jogo,x,y)
 	rect.w = juego->getTextura(textura)->gety() / 9;
 	puntos = 20;
 	ticks = 0;
+	estado = est;
 }
 
 
@@ -22,7 +23,7 @@ bool Premio::onClick(){
 	if (visible && dentro(x, y)){
 		cout << "Premio";
 		damePuntos();
-		juego->newPuntos(this);
+		estado->newPuntos(this);
 		
 		reinicio();
 		return true;

@@ -6,7 +6,7 @@ class GloboA : public GlobosPG
 {
 public:
 
-	GloboA(JuegoPG*jogo, int px, int py, int tipo);
+	GloboA(PlayPG*est,JuegoPG*jogo, int px, int py, int tipo);
 	~GloboA();
 	virtual void update();
 

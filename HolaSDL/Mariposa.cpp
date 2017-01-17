@@ -1,10 +1,11 @@
 #include "Mariposa.h"
 
 
-Mariposa::Mariposa(JuegoPG*jogo, int px, int py) : ObjetoPG(jogo,px,py)
+Mariposa::Mariposa(PlayPG*est,JuegoPG*jogo, int px, int py) : ObjetoPG(jogo, px, py)
 {
 	visible = true;
 	textura = TMariposa;
+	estado = est;
 	rect.h = juego->getTextura(textura)->gety();
 	rect.w = juego->getTextura(textura)->getx()*3;
 	cacho.x = 0;
@@ -29,7 +30,7 @@ bool Mariposa::onClick(){
 		rect.y = rand() % 770;
 		numClicks++;
 		if (numClicks == 3){
-			juego->newPremio();
+			estado->newPremio();
 			numClicks = 0;
 		}
 		return true;

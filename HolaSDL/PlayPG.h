@@ -10,6 +10,7 @@ public:
 	void newBaja(ObjetoJuego* po);
 	void newPuntos(ObjetoJuego* po); 
 	void newPremio();
+	void initObjetos();
 private:
 	bool fin;
 	int contador;

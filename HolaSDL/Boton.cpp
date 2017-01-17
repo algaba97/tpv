@@ -1,7 +1,7 @@
 #include "Boton.h"
 
 
-Boton::Boton(CallBack_t* callback,JuegoPG*jogo, int px, int py) : ObjetoPG(jogo, px, py)
+Boton::Boton(CallBack_t* callback, JuegoPG*jogo, int px, int py) : ObjetoPG(jogo, px, py)
 {
 	visible = true;
 	textura = TBoton;

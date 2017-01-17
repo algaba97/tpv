@@ -25,7 +25,7 @@ public:
 	void run();
 	bool initSDL();
 	void closeSDL();
-	void render() const;
+	void render();
 	void SDL_RenderCopy(SDL_Renderer* pRenderer, SDL_Texture* pTexture, SDL_Rect rect, SDL_Surface renderRect);
 	void onClick(int pmx, int pmy);
 	void update();
@@ -38,7 +38,7 @@ public:
 	
 	void initMedia(); // carga las texturas en el vector de texturas (fuente y música)
 	void freeMedia();
-	void initObjetos();
+
 	SDL_Window* getWindow(){ return window; }
 	EstadoJuego* topEstado();
 	

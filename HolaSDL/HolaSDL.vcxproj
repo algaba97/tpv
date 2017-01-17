@@ -12,7 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Boton.cpp" />
-    <ClCompile Include="Error.cpp" />
     <ClCompile Include="EstadoPG.cpp" />
     <ClCompile Include="FuenteSDL.cpp" />
     <ClCompile Include="GameOver.cpp" />

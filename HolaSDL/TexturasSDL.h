@@ -1,9 +1,10 @@
-#pragma once
+#ifndef TEXTURA_H
+#define TEXTURA_H
 #include "SDL.h"
 #include <string>
 #include <SDL_ttf.h>
 #include "FuenteSDL.h"
-#include <string>
+#include "Error.h"
 using namespace std;
 class TexturasSDL
 {
@@ -33,3 +34,4 @@ private:
 	bool load(SDL_Renderer*render, string const& nombArch, SDL_Color const& colKey);
 
 };
+#endif

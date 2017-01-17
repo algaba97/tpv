@@ -25,7 +25,7 @@ using namespace std;
 JuegoPG::JuegoPG()
 {
 
-	estado.push(new MenuPG());
+	
 	direcciones.resize(7);
 	direcciones[0] = "fondo.png";
 	direcciones[1] = "globo.png";
@@ -36,7 +36,6 @@ JuegoPG::JuegoPG()
 	direcciones[6] = "boton.png";
 	initSDL();
 	initMedia();
-	initObjetos();
 	srand(1);
 	//Crea el fondo
 
@@ -51,7 +50,7 @@ JuegoPG::JuegoPG()
 	c.g = 100;
 	c.b = 220;
 	c.a = 100;
-	
+	estado.push(new PlayPG(this));
 
 	//pFont = TTF_OpenFont("..\\bmps\\lazy.ttf", 28);
 	
@@ -77,6 +76,15 @@ JuegoPG::~JuegoPG()
 
 
 void JuegoPG::run(){
+	Uint32 lastUpdate = SDL_GetTicks();
+	int MSxUpdate = 500;
+	while (true){
+		if (SDL_GetTicks() - lastUpdate >= MSxUpdate){
+			topEstado()->update();
+			render();
+		}
+	}
+	/*
 	bool fin = false;
 	int pausa = 1;
 	if (!error) {
@@ -127,25 +135,10 @@ void JuegoPG::run(){
 		else cout << "Has obtenido " << contador << "puntos\n";
 		SDL_Delay(200); //cin.get();
 	}
+	*/
 }
-void JuegoPG::render()const{
-
-	//Clear the window to background color 
-	SDL_RenderClear(renderer);
-
-	
-	//Draw el fondo
-	
-	textura[0]->draw(getRender());
-
-	//bucle que llama uno a uno a los objetos para que ejecuten su metodo draw
-	for (int i = 0; i < Objetos.size(); i++){
-		Objetos[i]->draw();
-		//if(!dynamic_cast<ObjetoPG*>(Objetos[i])->dest) Objetos[i]->draw();
-	}
-	textura[5]->renderText(renderer, to_string(contador));
-
-	SDL_RenderPresent(renderer);
+void JuegoPG::render(){
+	topEstado()->draw();
 }
 
 
@@ -242,46 +235,6 @@ void JuegoPG::initMedia(){
 } 	
 
 //crea los differentes objetos como globos mas globos unos pocos mas de globos y si eso una mariposa y un premio
-void JuegoPG::initObjetos(){
-	int a, b,c;
-	/*for (int i = 0; i < globos; i++){
-		a = rand() % 770;
-		b = rand() % 770;
-	
-		Objetos.push_back(new GlobosPG(this, a, b,0));
-	}
-	a = rand() % 770;
-	b = rand() % 770;
-	Objetos.push_back(new GloboA(this, a, b, 1));
-	*/
-	cout << globos;
-	for (int i = 0; i < globos; i++){
-		/*c = rand() % 2; //`para que saltan aleatorios
-		a = rand() % 770;
-		b = rand() % 770;
-		if (c == 1)Objetos.push_back(new GloboA(this, a, b, 1));
-		else Objetos.push_back(new GlobosPG(this, a, b, 0));
-		*/
-		// para que salgan 2 y 2
-		c = i% 2;
-		a = rand() % 770;
-		b = rand() % 770;
-		if (c == 1)Objetos.push_back(new GloboA(this, a, b, 1));
-		else Objetos.push_back(new GlobosPG(this, a, b, 0));
-	}
-	a = rand() % 770;
-	b = rand() % 770;
-	Objetos.push_back(new Mariposa(this, a, b));
-	a = rand() % 770;
-	b = rand() % 770;
-	Objetos.push_back(new Mariposa(this, a, b));
-	a = rand() % 770;
-	b = rand() % 770;
-	Objetos.push_back(new Premio(this, a, b));
-	a = rand() % 770;
-	b = rand() % 770;
-	Objetos.push_back(new Premio(this, a, b));
-}
 void JuegoPG::freeMedia(){
 	textura[3]->closeFuente();
 	int largo = textura.size();

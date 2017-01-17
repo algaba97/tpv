@@ -16,3 +16,9 @@ EstadoPG::~EstadoPG()
 		 if (Objetos[i]->onClick())pinchado = true;
  
 }
+ void EstadoPG::draw(){
+	  SDL_RenderClear(juego->getRender());
+	  
+	  for (int i = 0; i < Objetos.size(); i++)Objetos[i]->draw();
+	  SDL_RenderPresent(juego->getRender());
+ }

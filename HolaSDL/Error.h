@@ -20,7 +20,10 @@ public:
 
 };
 #endif
+#ifndef ERRORT_H
+#define ERRORT_H
 class errorTextura : public Error {
 public:
 	errorTextura(string const& m) : Error(m) {};
 };
+#endif

@@ -7,7 +7,7 @@
 class Premio : public ObjetoPG
 {
 public:
-	Premio(JuegoPG*jogo, int px, int py);
+	Premio(PlayPG*est,JuegoPG*jogo, int px, int py);
 	~Premio();
 	void update();
 	bool onClick();
@@ -15,6 +15,7 @@ public:
 	
 private:
 	int ticks;
+	PlayPG*estado;
 };
 #endif
 

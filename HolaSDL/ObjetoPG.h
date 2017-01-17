@@ -4,6 +4,7 @@
 #include "SDL.h"
 #include "ObjetoJuego.h"
 #include "JuegoPG.h"
+#include "PlayPG.h"
 
 
 class ObjetoPG : public ObjetoJuego
@@ -30,6 +31,7 @@ protected:
 	JuegoPG* juego;
 	SDL_Rect rect;
 	int puntos;
+	
 	
 };
 

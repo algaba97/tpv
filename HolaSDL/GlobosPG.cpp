@@ -9,12 +9,13 @@
 
 using namespace std;
 
-GlobosPG::GlobosPG(JuegoPG*jogo, int px, int py, int tipo) :ObjetoPG(jogo,px,py)
+GlobosPG::GlobosPG(PlayPG*est,JuegoPG*jogo, int px, int py, int tipo) :ObjetoPG(jogo, px, py)
 {
 	tam = TAMANYO;
 	if (tipo == 0)
 	textura = TGlobo1;
 	else textura = TGlobo2;
+	estado = est;
 	rect.h = juego->getTextura(textura)->getx() / 9;
 	rect.w = juego->getTextura(textura)->gety() / 9;
 
@@ -34,7 +35,7 @@ void GlobosPG::update(){
 			rect.x += (rect.w / tam)*DT;//Para que cambiando el tamaño el globo siga centrado
 		}
 		else{
-			juego->newBaja(this);
+			estado->newBaja(this);
 			dest = true;
 		}
 	}
@@ -46,8 +47,8 @@ bool GlobosPG::onClick(){
 	if (!dest && visible &&dentro(x, y)){
 		cout << "Clikando";
 		damePuntos();
-		juego->newPuntos(this);
-		juego->newBaja(this);
+		estado->newPuntos(this);
+		estado->newBaja(this);
 		return true;
 	}
 	else return false;
