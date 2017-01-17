@@ -7,6 +7,9 @@ public:
 	PlayPG(JuegoPG*Juego);
 	~PlayPG();
 	void update();
+	void newBaja(ObjetoJuego* po);
+	void newPuntos(ObjetoJuego* po); 
+	void newPremio();
 private:
 	bool fin;
 	int contador;

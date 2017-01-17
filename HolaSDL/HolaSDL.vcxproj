@@ -23,7 +23,6 @@
     <ClCompile Include="Mariposa.cpp" />
     <ClCompile Include="MenuPG.cpp" />
     <ClCompile Include="ObjetoPG.cpp" />
-    <ClCompile Include="Pausa.cpp" />
     <ClCompile Include="PlayPG.cpp" />
     <ClCompile Include="Premio.cpp" />
     <ClCompile Include="TexturasSDL.cpp" />

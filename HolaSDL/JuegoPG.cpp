@@ -166,10 +166,7 @@ void JuegoPG::handle_event(int &pausa) {
 }
 
 void JuegoPG::update(){
-	for (int i = 0; i < Objetos.size(); i++){
-		Objetos[i]->update();
-	}
-	//Bucle que pasa por los updates de todos los objetos
+	topEstado()->update();
 }
 
 //Metodo que ocurre cuando pinchas con el boton izquierdo
@@ -177,11 +174,7 @@ void JuegoPG::onClick(int pmx, int pmy){
 	mousex = pmx;
 	mousey = pmy;
 	//Aquí va un bucle que pasa por los onCLiks de todos los objetos
-	for (int i = Objetos.size() - 1; i >= 0 && !fin; --i){
-		
-			if (Objetos[i]->onClick()) fin = true;
-	}
-	fin = false;
+	topEstado()->update();
 }
 	
 bool JuegoPG::initSDL() {
@@ -236,37 +229,8 @@ void JuegoPG::getMousePos(int & mpx, int & mpy) const{
 	mpy = mousey;
 }
 
-// Los objetos informarán al juego cuando causen baja
-void JuegoPG::newBaja(ObjetoJuego* po){
-	if (dynamic_cast<GlobosPG*>(po) != nullptr){
-		dynamic_cast<ObjetoPG*>(po)->destruir();
-		cout << "baja";
-	}
-} 
 
 
-// Los objetos informarán al juego cuando se obtengan puntos
-void JuegoPG::newPuntos(ObjetoJuego* po){
-	if (dynamic_cast<GlobosPG*>(po) != nullptr || dynamic_cast<Premio*>(po) != nullptr)
-		contador += dynamic_cast<ObjetoPG*>(po)->damePuntos();
-}
-
-// Los objetos informará al juego cuando se obtenga un premio
-void JuegoPG::newPremio(){
-	int a = rand() % 770;
-	int b = rand() % 770;
-	 //Objetos[Objetos.size() - 1]->visible = true;//siempre es el ultimo elemento y no se borra nunca
-	int i = 1;
-	bool fin = false;
-	while (!fin){
-		if (!dynamic_cast<ObjetoPG*>(Objetos[Objetos.size() - i])->esVisible()){
-			
-			fin = true;
-			dynamic_cast<ObjetoPG*>(Objetos[Objetos.size() - i])->visibilizar();
-		}
-		i++;
-	}
-} 
 
 // carga las texturas en el vector de texturas (fuente y música)
 void JuegoPG::initMedia(){

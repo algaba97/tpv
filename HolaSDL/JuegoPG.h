@@ -35,9 +35,7 @@ public:
 	TexturasSDL* getTextura(Texturas_t et) const { return textura[et]; };//¡¡mirar q es texturas!!
 	SDL_Renderer* getRender() const;
 	void getMousePos(int & mpx, int & mpy) const; // tendrás que añadir atributos para la posición del ratón(que deben actualizarse en onClick)
-	void newBaja(ObjetoJuego* po); // Los objetos informarán al juego cuando causen baja
-	void newPuntos(ObjetoJuego* po); // Los objetos informarán al juego cuando se obtengan puntos
-	void newPremio(); // Los objetos informará al juego cuando se obtenga un premio
+	
 	void initMedia(); // carga las texturas en el vector de texturas (fuente y música)
 	void freeMedia();
 	void initObjetos();

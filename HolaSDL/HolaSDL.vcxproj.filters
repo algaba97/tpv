@@ -57,9 +57,6 @@
     <ClCompile Include="GameOver.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="Pausa.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
     <ClCompile Include="Error.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
